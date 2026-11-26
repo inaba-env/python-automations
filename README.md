@@ -24,8 +24,8 @@ cp .env.example .env    # 値を入れる
 
 | ドキュメント | 内容 |
 |---|---|
-| [docs/structure.md](docs/structure.md) | 構成・業務フォルダの名前の付け方・各ファイルの役割 |
-| [docs/coding-rules.md](docs/coding-rules.md) | コードの書き方 |
-| [docs/sdk.md](docs/sdk.md) | `sdk/` に置くもの・変えるときに守ること |
-| [docs/writing-docs.md](docs/writing-docs.md) | ドキュメントとコメントの書き方 |
-| [docs/git.md](docs/git.md) | コミットの書き方・git に入れないもの |
+| [docs/構成とファイルの役割.md](docs/構成とファイルの役割.md) | 構成・業務フォルダの名前の付け方・各ファイルの役割 |
+| [docs/コードの書き方.md](docs/コードの書き方.md) | コードの書き方 |
+| [docs/sdkの決まり.md](docs/sdkの決まり.md) | `sdk/` に置くもの・変えるときに守ること |
+| [docs/ドキュメントの書き方.md](docs/ドキュメントの書き方.md) | ドキュメントとコメントの書き方 |
+| [docs/gitの使い方.md](docs/gitの使い方.md) | コミットの書き方・git に入れないもの |

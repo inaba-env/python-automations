@@ -12,11 +12,11 @@ Python で書く自動化を 1 件 1 フォルダ（`YYYYMMDD_業務名/`）で�
 
 | いつ | 読むもの |
 |---|---|
-| 業務フォルダを作る・ファイルを足すとき | [docs/structure.md](docs/structure.md) |
-| コードを書く・直す・見直すとき | [docs/coding-rules.md](docs/coding-rules.md) |
-| `sdk/` を触るとき | [docs/sdk.md](docs/sdk.md) |
-| ドキュメント・コメントを書くとき | [docs/writing-docs.md](docs/writing-docs.md) |
-| コミットするとき | [docs/git.md](docs/git.md) |
+| 業務フォルダを作る・ファイルを足すとき | [docs/構成とファイルの役割.md](docs/構成とファイルの役割.md) |
+| コードを書く・直す・見直すとき | [docs/コードの書き方.md](docs/コードの書き方.md) |
+| `sdk/` を触るとき | [docs/sdkの決まり.md](docs/sdkの決まり.md) |
+| ドキュメント・コメントを書くとき | [docs/ドキュメントの書き方.md](docs/ドキュメントの書き方.md) |
+| コミットするとき | [docs/gitの使い方.md](docs/gitの使い方.md) |
 
 ## 作業の進め方
 
@@ -36,12 +36,12 @@ Python で書く自動化を 1 件 1 フォルダ（`YYYYMMDD_業務名/`）で�
 ### sdk を変えるとき
 
 - 2 つ以上の業務で使うかを先に確かめる。1 つの業務でしか使わないなら、その業務の `components/` に置く
-- 既存の引数を変える・消す変更はしない（[docs/sdk.md](docs/sdk.md)）
+- 既存の引数を変える・消す変更はしない（[docs/sdkの決まり.md](docs/sdkの決まり.md)）
 
 ### ルールを足すとき
 
 - ルールは `docs/` の内容に合うファイルに書く。このファイルに書くのは、Claude の作業の進め方だけ
-- 同じことを 2 か所に書かない（[docs/writing-docs.md](docs/writing-docs.md#同じことは-1-か所に書く)）
+- 同じことを 2 か所に書かない（[docs/ドキュメントの書き方.md](docs/ドキュメントの書き方.md#同じことは-1-か所に書く)）
 
 ## 回答の書き方
 
