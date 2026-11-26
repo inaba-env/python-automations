@@ -17,7 +17,7 @@ git merge template/main --allow-unrelated-histories   # 初回だけ --allow-unr
 
 - Conventional Commits の形にする: `feat:` / `fix:` / `docs:` / `refactor:` / `chore:`
 - コミットメッセージは日本語で書く
-- 1 コミットに 1 つの変更にする。業務フォルダの変更と、`sdk/`・`_template/`・`docs/` の変更は別のコミットに分ける。ひな形に戻したい変更を、業務の変更と混ぜずに取り出せるようにするため
+- 1 コミットに 1 つの変更にする
 
 ## git に入れないもの
 
@@ -26,8 +26,3 @@ private リポジトリでも、次のものは入れない。ルートの `.git
 - `.env`（認証情報）。リポジトリを見られる人に ID・パスワードが渡るため
 - `output/`（実行結果。相手のシステムから取ったデータを含む）
 - `.venv/`・`*.egg-info`・`__pycache__/`
-
-## ひな形（公開リポジトリ）に変更を戻すとき
-
-- 戻すのは `sdk/`・`_template/`・`docs/` の変更だけ。業務フォルダは戻さない
-- 依頼先の会社名・システムの URL・画面の XPath を書かない。例は `example.com` のような架空のものにする
