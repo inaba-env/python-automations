@@ -2,20 +2,13 @@
 
 ## リポジトリの持ち方
 
-公開している python-automations はひな形で、業務フォルダを入れない。使う人は、ここから自分の private リポジトリを作り、業務フォルダもそこにコミットして運用する。
+公開している python-automations はひな形で、業務フォルダを入れない。使う人は、ここから作った自分の private リポジトリに、業務フォルダもコミットして運用する。
 
-### 自分の private リポジトリを作る
+## ひな形の更新を取り込む
 
-GitHub の python-automations の画面で「Use this template」→「Create a new repository」を選び、Visibility を Private にして作る。
-
-fork は使わない。公開リポジトリを fork したリポジトリは公開になり、private に変えられないため。
-
-### ひな形の更新を取り込む
-
-「Use this template」で作ったリポジトリは、ひな形とつながっていない。`sdk/`・`_template/`・`docs/` の更新を取り込むときは、ひな形を remote に足して取り込む。
+`sdk/`・`_template/`・`docs/` の更新は、remote の `template`（ひな形）から取り込む。
 
 ```bash
-git remote add template https://github.com/inaba-env/python-automations.git
 git fetch template
 git merge template/main --allow-unrelated-histories   # 初回だけ --allow-unrelated-histories が要る
 ```
