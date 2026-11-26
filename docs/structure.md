@@ -1,0 +1,57 @@
+# 構成とファイルの役割
+
+## リポジトリの構成
+
+```
+python-automations/
+├── CLAUDE.md
+├── README.md
+├── docs/                      ルール（このフォルダ）
+├── pyproject.toml             sdk と、全業務で使うライブラリ
+├── sdk/                       2 つ以上の業務で使う部品
+├── _template/                 新しい業務のコピー元
+└── YYYYMMDD_業務名/           1 件 1 フォルダ
+```
+
+`.venv` はルートに 1 つだけ作り、全業務で使う。業務ごとに分けないのは、業務どうしでライブラリの版がぶつかることがほとんどなく、分けると業務ごとに環境を作る手間が増えるため。
+
+## 業務フォルダ
+
+```
+YYYYMMDD_業務名/
+├── README.md          何をするか・流れ・実行方法・出力
+├── .env.example       .env のキー名だけ
+├── .env               値（git に入れない）
+├── impl.py            入口
+├── parameters.py
+├── constants.py
+├── schema.py
+├── usecases/
+├── components/
+└── output/            出力（git に入れない）
+```
+
+### 名前の付け方
+
+- フォルダ名は `YYYYMMDD_業務名`。日付は業務を始めた日。先頭に置くと一覧が始めた順に並ぶ
+- 業務名は日本語でよい。業務フォルダは import されず、中で `impl.py` を実行するだけなので、Python の識別子にできない名前（数字始まり・日本語）でも動く
+- 業務フォルダの中の `.py` とフォルダの名前は英語にする（[coding-rules.md](coding-rules.md#名前)）
+
+### git に入れないもの
+
+- 業務フォルダは丸ごと git に入れない。このリポジトリは公開していて、業務フォルダには依頼先のシステムの URL・画面の作り・依頼元が入るため
+- git で管理するのは `sdk/`・`_template/`・`docs/` など、どの業務にも関わらないものだけ
+- `.env` は業務フォルダごとに置く。業務ごとにログイン先や認証情報が違うため
+
+## 各ファイルの役割
+
+| ファイル | 役割 |
+|---|---|
+| `impl.py` | 入口。`.env` を読む・ブラウザなど外とつなぐものを作る・usecase を順に呼ぶ。実処理は書かない |
+| `parameters.py` | 実行時に受け取る引数（argparse）と、その型（dataclass） |
+| `constants.py` | 固定の値。URL・画面の XPath・待ち時間・出力の列や文字コード |
+| `schema.py` | 工程をまたいで受け渡すデータの型（dataclass） |
+| `usecases/` | 業務の流れ。1 つの流れを 1 ファイルにする。画面やファイルの読み書きは components に任せる |
+| `components/` | 画面の操作・ファイルの読み書き・データの変換。1 ファイル 1 役割 |
+
+呼ぶ向きは `impl.py` → `usecases/` → `components/` の一方だけにする。components から usecases を呼ばない。

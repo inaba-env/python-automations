@@ -1,0 +1,31 @@
+# python-automations
+
+Python で書く自動化（単発の依頼・社内の作業）を、1 件 1 フォルダで置くリポジトリ。
+
+## 環境を作る
+
+`.venv` はルートに 1 つだけ作り、全業務で使う。
+
+```bash
+python3 -m venv .venv
+.venv/bin/pip install -e .
+```
+
+## 新しい業務を始める
+
+```bash
+cp -R _template 20261201_業務名
+cd 20261201_業務名
+cp .env.example .env    # 値を入れる
+../.venv/bin/python impl.py
+```
+
+## ルール
+
+| ドキュメント | 内容 |
+|---|---|
+| [docs/structure.md](docs/structure.md) | 構成・業務フォルダの名前の付け方・各ファイルの役割 |
+| [docs/coding-rules.md](docs/coding-rules.md) | コードの書き方 |
+| [docs/sdk.md](docs/sdk.md) | `sdk/` に置くもの・変えるときに守ること |
+| [docs/writing-docs.md](docs/writing-docs.md) | ドキュメントとコメントの書き方 |
+| [docs/git.md](docs/git.md) | コミットの書き方・git に入れないもの |
