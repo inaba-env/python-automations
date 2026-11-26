@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sdk"
+version = "0.1.0"
+description = "python-automations の共通部品（sdk）と、全業務で使うライブラリ。"
+requires-python = ">=3.11"
+# .venv はルートに 1 つで、全業務がこれを使う。業務で要るライブラリはここに足す
+dependencies = [
+    "python-dotenv>=1.0,<2.0",
+    "selenium>=4.6,<5.0",
+]
+
+[tool.setuptools.packages.find]
+include = ["sdk*"]
