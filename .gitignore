@@ -14,9 +14,6 @@ dist/
 # 実行結果（業務フォルダごとの output/）
 output/
 
-# 業務フォルダ（YYYYMMDD_業務名/）。依頼先のシステムの URL・画面の作り・依頼元を含むため公開しない
-/[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]_*/
-
 # editor / OS
 .vscode/*
 !.vscode/settings.json
