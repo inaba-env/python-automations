@@ -1,0 +1,15 @@
+#!/bin/sh
+# git pull のあとに、ひな形（remote の template）に取り込んでいない更新があれば知らせる。
+# マージが終わったあとに動くフックなので、止めることはできない。
+
+git remote get-url template >/dev/null 2>&1 || exit 0
+git fetch --quiet template main || exit 0
+
+count=$(git rev-list --count HEAD..template/main)
+[ "$count" -eq 0 ] && exit 0
+
+echo ""
+echo "ひな形に、取り込んでいない更新が ${count} 件あります。取り込むまで push できません。"
+git log --format='  - %s' HEAD..template/main
+echo "取り込み方: git merge template/main（docs/gitの使い方.md の「ひな形の更新を取り込む」）"
+exit 0

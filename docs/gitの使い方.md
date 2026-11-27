@@ -13,6 +13,19 @@ git fetch template
 git merge template/main --allow-unrelated-histories   # 初回だけ --allow-unrelated-histories が要る
 ```
 
+取り込んだかどうかは、`template/main` のコミットが自分のブランチの履歴に入っているかで判断する。ファイルを手でコピーしたり squash でマージしたりすると、取り込んでいないと判断される。`git merge` で取り込む。
+
+`.githooks/` のフックが、次のときに知らせる（有効にするには `git config core.hooksPath .githooks`）。
+
+| いつ | フック | すること |
+|---|---|---|
+| `git push` の前 | `pre-push` | `template` を fetch し、取り込んでいない更新があれば一覧を出して push を止める |
+| `git pull` のあと | `post-merge` | 取り込んでいない更新があれば一覧を出す。止めはしない |
+
+急ぎで取り込まずに push するときは `git push --no-verify` を使う。
+
+ひな形を更新する人は、取り込んだあとにメンバーがすることを、コミットメッセージに書く（例: `pip install -e .` をやり直す）。フックが出す一覧は、このコミットメッセージ。
+
 ## コミット
 
 - Conventional Commits の形にする: `feat:` / `fix:` / `docs:` / `refactor:` / `chore:`
