@@ -8,12 +8,17 @@ Python で書く自動化（単発の依頼・社内の作業）を、1 件 1 �
 
 ## 環境を作る
 
-`.venv` はルートに 1 つだけ作り、全業務で使う。
+`.venv` はルートに 1 つだけ作り、全業務で使う（理由と例外は [docs/構成とファイルの役割.md](docs/構成とファイルの役割.md#python-の環境venv)）。
 
 ```bash
 python3 -m venv .venv
-.venv/bin/pip install -e .
+.venv/bin/pip install -e .                  # sdk（pyproject.toml）
+.venv/bin/pip install -r requirements.txt   # 業務で使うライブラリ（requirements.txt）
 ```
+
+- `pip install -e .` は、`pyproject.toml` を読んで `sdk/` を入れる。これをしないと、業務フォルダで `impl.py` を実行したときに `import sdk` が `ModuleNotFoundError` になり、sdk が使えない
+- `pip install -r requirements.txt` は、業務のコードが使うライブラリを入れる
+- 2 つのファイルの役割の違いは [docs/構成とファイルの役割.md](docs/構成とファイルの役割.md#pyprojecttoml-と-requirementstxt)
 
 ## 新しい業務を始める
 
